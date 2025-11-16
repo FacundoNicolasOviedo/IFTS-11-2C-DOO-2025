@@ -32,6 +32,27 @@ class Database(object):
             line = file.readline()
         file.close()
         return vectorDatabase
+    
+def registrarNuevoCliente():
+    nombre = input("Ingrese su nombre")
+    apellido = input("Ingrese su apellido")
+    DNI = input("ingrese su DNI")
+
+def menu():    
+     print("Bienvenido a la peluqueria El Viejo Manos de Peine")
+     print("Seleccione una opción")
+     print("1. Registrar nuevo cliente")
+     print("2. Solicitar turno") 
+     print("3. Listar turnos existentes") 
+     print("4. Modificar o cancelar turno") 
+     print("5. Guardar datos en CSV / Cargar desde dict") 
+     print("6. Salir") 
+     n = input("Seleccione una opción: ")
+     if n == "3":
+         print("holaaa")
+         
+
+menu()
 
 db = Database("Clientes.csv")
 registros = db.read()
