@@ -6,19 +6,26 @@ class Empleado(object):
         self.DNI = DNI
         self.dias = dias
         self.horarios = horarios
-
     
-    def agregar_a_csv(nombre_archivo):    
-        file = open(nombre_archivo, "at")
-        print("Ingresa los datos del nuevo Empleado: ")
-        Empleado.nombre = input("Ingrese su nombre: ")
-        while Empleado.nombre != "":
-              Empleado.apellido = input("Ingrese su apellido: ")
-              Empleado.DNI = input("ingrese su DNI: ")
-              Empleado.dias = input("ingrese el día que trabaja: ")
-              Empleado.horarios = input("Ingrese el horario que hace: ")
-              vectorDatabase = [Empleado.nombre, Empleado.apellido, Empleado.DNI, Empleado.dias, Empleado.horarios]
-              fila = ",".join(vectorDatabase) + "\n"
-              file.writelines([fila])
-              Empleado.nombre = input("Ingrese su nombre: ")
+    def guardar_en_csv(self, archivo):
+        file = open(archivo, "at")
+        fila = f"{self.nombre},{self.apellido},{self.DNI}, {self.dias}, {self.horarios}\n"
+        file.write(fila)
         file.close()
+
+ 
+    def cargar_empleados_por_consola(archivo):
+        print("Ingresa los datos del nuevo empleado: ")
+        while True:
+            nombre = input("ingrese su nombre: ")
+            if nombre == "":
+                print("Elija un nombre valido")
+                break
+            apellido = input("ingrese su apellido: ")
+            DNI = input("ingrese su DNI: ")
+            dias = input("ingrese su dias: ")
+            horarios = input("ingrese su horario: ")
+            cliente = Empleado(nombre, apellido, DNI, dias, horarios)
+            cliente.guardar_en_csv(archivo)
+
+
