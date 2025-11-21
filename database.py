@@ -22,13 +22,20 @@ class Database(object):
         vectorDatabase = []
         if line == "":
             return []
-        keys = line.split(";")
+        keys = line.split(",")
         tranform = Transformador(keys)
         line = file.readline()
         while line != "":
-            values = line.split(";")
+            values = line.split(",")
             d = tranform.Csv2Dic(values)
             vectorDatabase.append(d)
             line = file.readline()
         file.close()
         return vectorDatabase
+    
+    def existe_dni(self, dni):
+        registros = self.read()
+        for r in registros:
+            if r is not None and r.get("DNI") == dni:
+                return True
+        return False

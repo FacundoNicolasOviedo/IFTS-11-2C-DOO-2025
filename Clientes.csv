@@ -1,6 +1,12 @@
-nombre;apellido;DNI
-Lucas;Gomez;33895447
-Martin;Sanchez;45567891
-Andres;Navarro;24333123
+nombre,apellido,DNI
+Lucas,Gomez,33895447
+Martin,Sanchez,45567891
+Andres,Navarro,24333123
 Lucas,Morgan,12345678
 Facundo,Oviedo,38522081
+Florencia,Rojo,32394487
+Jorge,Oviedo,16034667
+Patricia,Viviana,12034556
+Francisco,Leon,34555632
+Leandro,Casemiro,34222123
+
