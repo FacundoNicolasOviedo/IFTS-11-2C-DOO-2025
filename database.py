@@ -17,25 +17,21 @@ class Database(object):
         self.filename = filename
 
     def read(self):
-        file = open(self.filename, "rt")
-        line = file.readline()
-        vectorDatabase = []
-        if line == "":
-            return []
-        keys = line.split(",")
-        tranform = Transformador(keys)
-        line = file.readline()
-        while line != "":
-            values = line.split(",")
-            d = tranform.Csv2Dic(values)
-            vectorDatabase.append(d)
-            line = file.readline()
-        file.close()
-        return vectorDatabase
+         file = open(self.filename, "rt")
+         line = file.readline()
+         vectorDatabase = []
+         if line == "":
+             return []
+         keys = line.strip().split(",")  
+         tranform = Transformador(keys)
+         line = file.readline()
+         while line != "":
+             line = line.strip()  
+             values = line.split(",")
+             d = tranform.Csv2Dic(values)
+             if d is not None:  
+                 vectorDatabase.append(d)
+             line = file.readline()
+         file.close()
+         return vectorDatabase
     
-    def existe_dni(self, dni):
-        registros = self.read()
-        for r in registros:
-            if r is not None and r.get("DNI") == dni:
-                return True
-        return False

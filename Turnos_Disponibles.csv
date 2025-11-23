@@ -1,7 +1,3 @@
-DNI,trabajo,profesional,dia,hora
-,,Alejandro,Martes,11
-,,Pepe;Jueves;9
-,,Pepe;Jueves;10
-,,Juan;Miercoles;8
-,,Juan;Miercoles;9
-,,Juan;Miercoles;10
+turno_id,trabajo,profesional,dia,hora
+4,alisado,Juan,Miercoles,8
+6,corte,Alejandro,Martes,12
