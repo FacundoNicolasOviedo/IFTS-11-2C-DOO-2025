@@ -15,6 +15,7 @@ def solicitar_turno():
         print("\nNo hay turnos disponibles.")
         return
 
+    print("\nRecordá que solo podrás sacar un turno")
     print("\nTURNOS DISPONIBLES:")
     for s in disponibles:
         print(f"{s['turno_id']} - {s['trabajo']} con {s['profesional']} el {s['dia']} a las {s['hora']}")
