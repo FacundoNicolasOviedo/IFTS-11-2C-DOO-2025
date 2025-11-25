@@ -1,4 +1,5 @@
 import database
+import clientes
 
 def solicitar_turno():
    
@@ -19,7 +20,7 @@ def solicitar_turno():
         print(f"{s['turno_id']} - {s['trabajo']} con {s['profesional']} el {s['dia']} a las {s['hora']}")
 
  
-    turno_id = input("\nElegí un turno_id: ")
+    turno_id = input("\nElegí una opción: ")
 
    
     turno_elegido = None
@@ -35,23 +36,25 @@ def solicitar_turno():
    
     dni = input("DNI del cliente: ")
 
+    if not clientes.Cliente.dni_existe(dni):
+        print("El cliente aún no se encuentra registrado en nuestra base de datos")
+    else:
+         nueva_lista = [s for s in disponibles if s["turno_id"] != turno_id]
+
+         file = open("Turnos_Disponibles.csv", "wt")
+         file.write("turno_id,trabajo,profesional,dia,hora\n")
+         for t in nueva_lista:
+             linea = ",".join([t["turno_id"], t["trabajo"], t["profesional"], t["dia"], t["hora"]])
+             file.write(linea + "\n")
+         file.close()
+
    
-    nueva_lista = [s for s in disponibles if s["turno_id"] != turno_id]
+         file = open("Turnos_Asignados.csv", "at")
+         linea = ",".join([dni, turno_elegido["trabajo"], turno_elegido["profesional"],turno_elegido["dia"], turno_elegido["hora"]])
+         file.write(linea + "\n")
+         file.close()
 
-    file = open("Turnos_Disponibles.csv", "w", encoding="utf-8")
-    file.write("turno_id,trabajo,profesional,dia,hora\n")
-    for t in nueva_lista:
-        linea = ",".join([t["turno_id"], t["trabajo"], t["profesional"], t["dia"], t["hora"]])
-        file.write(linea + "\n")
-    file.close()
-
-   
-    file = open("Turnos_Asignados.csv", "a", encoding="utf-8")
-    linea = ",".join([dni, turno_elegido["trabajo"], turno_elegido["profesional"],turno_elegido["dia"], turno_elegido["hora"]])
-    file.write(linea + "\n")
-    file.close()
-
-    print("\nTurno reservado correctamente\n")
+         print("\nTurno reservado correctamente\n")
 
 def eliminar_turno():
 
@@ -72,10 +75,6 @@ def eliminar_turno():
 
     
     nueva_lista = [s for s in asignados if s["DNI"] != dni]
-
-    if len(nueva_lista) == len(asignados):
-        print("No se encontró ningún turno con ese DNI.")
-        return
 
     
     file = open("Turnos_Asignados.csv", "wt")

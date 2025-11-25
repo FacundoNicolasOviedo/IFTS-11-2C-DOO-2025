@@ -5,8 +5,8 @@ import turnos
 
 
 def menu():    
-     print("Bienvenido a la peluqueria El Viejo Manos de Peine")
-     print("Seleccione una opción")
+     print("\nBIENVENIDO A LA PELUQUERIA EL VIEJO MANOS DE PEINE\n")
+     print("En que lo podemos ayduar\n")
      print("1. Mostrar clientes")
      print("2. Registrar nuevo cliente")
      print("3. Mostrar empleados")
@@ -21,7 +21,7 @@ def menu():
          registros = db.read()
          print("\nNUESTROS CLIENTES:\n")
          for s in registros:
-             print(f"{s['nombre']} - {s['apellido']} - {s['DNI']}")
+             print(f"{s['nombre']} {s['apellido']} - {s['DNI']}")
          print("\n")
          menu()
      elif n == "2":
@@ -32,7 +32,7 @@ def menu():
          print("\nNUESTROS EMPLEADOS:\n")
          registros = db.read()
          for s in registros:
-             print(f"{s['nombre']} - {s['apellido']} - {s['DNI']} - {s['dias']} - {s['horarios']}")
+             print(f"{s['nombre']} {s['apellido']} - {s['DNI']} - {s['dias']} - {s['horarios']}")
          print("\n")
          menu()
      elif n == "4":
@@ -42,8 +42,10 @@ def menu():
      elif n == "6":
          db = database.Database("Turnos_Asignados.csv")
          registros = db.read()
+         print("\nTurnos asignados\n")
          for s in registros:
              print(f"{s['DNI']} - {s['trabajo']} - {s['profesional']} - {s['dia']} - {s['hora']}")
+         print("\n")
          menu()
      elif n == "7":
          turnos.eliminar_turno()
