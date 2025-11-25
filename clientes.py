@@ -9,7 +9,12 @@ class Cliente(object):
         fila = f"{self.nombre},{self.apellido},{self.DNI}\n"
         file.write(fila)
         file.close()
-    
+
+    def dni_existe(dni):
+         file = open("Clientes.csv", "rt")
+         existe = dni in file.read()  
+         file.close()
+         return existe
   
     def cargar_clientes_por_consola(archivo):
 
@@ -18,6 +23,9 @@ class Cliente(object):
             DNI = input("ingrese su DNI: ")
             if DNI == "":
                 print("Elija un DNI valido")
+                break
+            if Cliente.dni_existe(DNI):
+                print("El DNI ya se encuentra registrado")
                 break
             nombre = input("ingrese su nombre: ")
             if nombre == "":
