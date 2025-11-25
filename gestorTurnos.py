@@ -50,7 +50,7 @@ def menu():
      elif n == "7":
          turnos.eliminar_turno()
      elif n == "8":
-         print("Usted ha salido del sistema")
+         print("Usted ha salido del sistema.")
         
         
 menu()
