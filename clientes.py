@@ -35,6 +35,7 @@ class Cliente(object):
             if apellido == "":
                 print("Elija un apellido valido")
                 break
-            
+            print("\nCliente registrado con exito\n")
+            print("Ingresa los datos del nuevo cliente: ")
             cliente = Cliente(nombre, apellido, DNI)
             cliente.guardar_en_csv(archivo)
