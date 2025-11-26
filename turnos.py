@@ -61,6 +61,13 @@ def solicitar_turno():
 
 def eliminar_turno():
 
+
+    def validar_dni(dni):
+         file = open("Turnos_Asignados.csv", "rt")
+         existe = dni in file.read()  
+         file.close()
+         return existe
+
     db_asig = database.Database("Turnos_Asignados.csv")
     asignados = db_asig.read()
 
@@ -75,16 +82,19 @@ def eliminar_turno():
 
     
     dni = input("\nIngrese el DNI del turno que desea eliminar: ")
+    
+    if not validar_dni(dni):
+        print("El cliente aún no cuenta con algun turno asignado")
+    else:
+
+         nueva_lista = [s for s in asignados if s["DNI"] != dni]
 
     
-    nueva_lista = [s for s in asignados if s["DNI"] != dni]
+         file = open("Turnos_Asignados.csv", "wt")
+         file.write("DNI,trabajo,profesional,dia,hora\n")
+         for t in nueva_lista:
+             linea = ",".join([t["DNI"], t["trabajo"], t["profesional"], t["dia"], t["hora"]])
+             file.write(linea + "\n")
+         file.close()
 
-    
-    file = open("Turnos_Asignados.csv", "wt")
-    file.write("DNI,trabajo,profesional,dia,hora\n")
-    for t in nueva_lista:
-        linea = ",".join([t["DNI"], t["trabajo"], t["profesional"], t["dia"], t["hora"]])
-        file.write(linea + "\n")
-    file.close()
-
-    print("\nTurno eliminado correctamente.\n")
+         print("\nTurno eliminado correctamente.\n")
