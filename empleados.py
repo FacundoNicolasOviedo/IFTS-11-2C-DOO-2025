@@ -13,21 +13,21 @@ class Empleado(object):
         file.write(fila)
         file.close()
     
-    def dni_existe(dni):
+    def validar_dni(dni):
          file = open("Empleados.csv", "rt")
          existe = dni in file.read()  
          file.close()
          return existe
 
  
-    def cargar_empleados_por_consola(archivo):
+    def registrar_empleado(archivo):
         print("Ingresa los datos del nuevo empleado: ")
         while True:
             DNI = input("ingrese su DNI: ")
             if DNI == "":
                 print("Elija un DNI valido")
                 break
-            if Empleado.dni_existe(DNI):
+            if Empleado.validar_dni(DNI):
                 print("El DNI ya se encuentra registrado")
                 break
             nombre = input("ingrese su nombre: ")

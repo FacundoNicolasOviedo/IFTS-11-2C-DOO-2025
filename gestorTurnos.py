@@ -31,7 +31,7 @@ def menu():
          else:
              print("Usted ha salido del sistema.")
      elif n == "2":
-         clientes.Cliente.cargar_clientes_por_consola("Clientes.csv")
+         clientes.Cliente.registrar_cliente("Clientes.csv")
          print("\n1- volver al menu")
          print("2- salir")
          a = input("\nElija una opcion: ")
@@ -54,7 +54,7 @@ def menu():
          else:
              print("Usted ha salido del sistema.")
      elif n == "4":
-         empleados.Empleado.cargar_empleados_por_consola("Empleados.csv")
+         empleados.Empleado.registrar_empleado("Empleados.csv")
          print("\n1- volver al menu")
          print("2- salir")
          a = input("\nElija una opcion: ")

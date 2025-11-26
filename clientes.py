@@ -10,13 +10,13 @@ class Cliente(object):
         file.write(fila)
         file.close()
 
-    def dni_existe(dni):
+    def validar_dni(dni):
          file = open("Clientes.csv", "rt")
          existe = dni in file.read()  
          file.close()
          return existe
   
-    def cargar_clientes_por_consola(archivo):
+    def registrar_cliente(archivo):
 
         print("Ingresa los datos del nuevo cliente: ")
         while True:
@@ -24,7 +24,7 @@ class Cliente(object):
             if DNI == "":
                 print("Elija un DNI valido")
                 break
-            if Cliente.dni_existe(DNI):
+            if Cliente.validar_dni(DNI):
                 print("El DNI ya se encuentra registrado")
                 break
             nombre = input("ingrese su nombre: ")
