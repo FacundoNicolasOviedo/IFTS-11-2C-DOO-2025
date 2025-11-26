@@ -37,7 +37,9 @@ def solicitar_turno():
    
     dni = input("DNI del cliente: ")
 
-    if not clientes.Cliente.dni_existe(dni):
+    if not clientes.Cliente.validar_dni(dni):
+        print("El cliente aún no se encuentra registrado en nuestra base de datos")
+    elif dni == "":
         print("El cliente aún no se encuentra registrado en nuestra base de datos")
     else:
          nueva_lista = [s for s in disponibles if s["turno_id"] != turno_id]

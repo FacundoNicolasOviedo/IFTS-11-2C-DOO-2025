@@ -6,7 +6,7 @@ import turnos
 
 def menu():    
      print("\nBIENVENIDO A LA PELUQUERIA EL VIEJO MANOS DE PEINE\n")
-     print("En que lo podemos ayduar\n")
+     print("En que lo podemos ayudar\n")
      print("1. Mostrar clientes")
      print("2. Registrar nuevo cliente")
      print("3. Mostrar empleados")
@@ -96,8 +96,6 @@ def menu():
              print("Usted ha salido del sistema.")
      elif n == "8":
          print("Usted ha salido del sistema.")
-        
-        
 menu()
 
 
