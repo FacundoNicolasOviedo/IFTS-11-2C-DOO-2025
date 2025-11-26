@@ -23,10 +23,22 @@ def menu():
          for s in registros:
              print(f"{s['nombre']} {s['apellido']} - {s['DNI']}")
          print("\n")
-         menu()
+         print("\n1- volver al menu")
+         print("2- salir")
+         a = input("\nElija una opcion: ")
+         if a == "1":
+             menu()
+         else:
+             print("Usted ha salido del sistema.")
      elif n == "2":
          clientes.Cliente.cargar_clientes_por_consola("Clientes.csv")
-         menu()
+         print("\n1- volver al menu")
+         print("2- salir")
+         a = input("\nElija una opcion: ")
+         if a == "1":
+             menu()
+         else:
+             print("Usted ha salido del sistema.")
      elif n == "3":
          db = database.Database("Empleados.csv")
          print("\nNUESTROS EMPLEADOS:\n")
@@ -34,11 +46,31 @@ def menu():
          for s in registros:
              print(f"{s['nombre']} {s['apellido']} - {s['DNI']} - {s['dias']} - {s['horarios']}")
          print("\n")
-         menu()
+         print("\n1- volver al menu")
+         print("2- salir")
+         a = input("\nElija una opcion: ")
+         if a == "1":
+             menu()
+         else:
+             print("Usted ha salido del sistema.")
      elif n == "4":
          empleados.Empleado.cargar_empleados_por_consola("Empleados.csv")
+         print("\n1- volver al menu")
+         print("2- salir")
+         a = input("\nElija una opcion: ")
+         if a == "1":
+             menu()
+         else:
+             print("Usted ha salido del sistema.")
      elif n == "5":
          turnos.solicitar_turno()
+         print("\n1- volver al menu")
+         print("2- salir")
+         a = input("\nElija una opcion: ")
+         if a == "1":
+             menu()
+         else:
+             print("Usted ha salido del sistema.")
      elif n == "6":
          db = database.Database("Turnos_Asignados.csv")
          registros = db.read()
@@ -46,9 +78,22 @@ def menu():
          for s in registros:
              print(f"{s['DNI']} - {s['trabajo']} - {s['profesional']} - {s['dia']} - {s['hora']}")
          print("\n")
-         menu()
+         print("\n1- volver al menu")
+         print("2- salir")
+         a = input("\nElija una opcion: ")
+         if a == "1":
+             menu()
+         else:
+             print("Usted ha salido del sistema.")
      elif n == "7":
          turnos.eliminar_turno()
+         print("\n1- volver al menu")
+         print("2- salir")
+         a = input("\nElija una opcion: ")
+         if a == "1":
+             menu()
+         else:
+             print("Usted ha salido del sistema.")
      elif n == "8":
          print("Usted ha salido del sistema.")
         

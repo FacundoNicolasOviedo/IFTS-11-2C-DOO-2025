@@ -46,6 +46,8 @@ class Empleado(object):
             if horarios == "":
                 print("Elija un horario valido")
                 break
+            print("\nEmpleado registrado con exito\n")
+            print("Ingresa los datos del nuevo empleado: ")
             cliente = Empleado(nombre, apellido, DNI, dias, horarios)
             cliente.guardar_en_csv(archivo)
 
